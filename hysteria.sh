@@ -2,8 +2,8 @@
 
 export LANG=en_US.UTF-8
 
-RED="\033[31m"
-GREEN="\033[32m"
+BLUE='\033[34m'
+PINK='\033[35m' 
 YELLOW="\033[33m"
 PLAIN="\033[0m"
 
@@ -55,9 +55,9 @@ realip(){
 inst_cert(){
     green "Hysteria 2 协议证书申请方式如下："
     echo ""
-    echo -e " ${GREEN}1.${PLAIN} 必应自签证书 ${YELLOW}（默认）${PLAIN}"
-    echo -e " ${GREEN}2.${PLAIN} Acme 脚本自动申请"
-    echo -e " ${GREEN}3.${PLAIN} 自定义证书路径"
+    echo -e " ${PINK}1.${PLAIN} 必应自签证书 ${YELLOW}（默认）${PLAIN}"
+    echo -e " ${PINK}2.${PLAIN} Acme 脚本自动申请"
+    echo -e " ${PINK}3.${PLAIN} 自定义证书路径"
     echo ""
     read -rp "请输入选项 [1-3]: " certInput
     if [[ $certInput == 2 ]]; then
@@ -177,7 +177,7 @@ inst_port(){
     [[ -z $port ]] && port=$(shuf -i 2000-65535 -n 1)
     until [[ -z $(ss -tunlp | grep -w udp | awk '{print $5}' | sed 's/.*://g' | grep -w "$port") ]]; do
         if [[ -n $(ss -tunlp | grep -w udp | awk '{print $5}' | sed 's/.*://g' | grep -w "$port") ]]; then
-            echo -e "${RED} $port ${PLAIN} 端口已经被其他程序占用，请更换端口重试！"
+            echo -e "${BLUE} $port ${PLAIN} 端口已经被其他程序占用，请更换端口重试！"
             read -p "设置 Hysteria 2 端口 [1-65535]（回车则随机分配端口）：" port
             [[ -z $port ]] && port=$(shuf -i 2000-65535 -n 1)
         fi
@@ -190,8 +190,8 @@ inst_port(){
 inst_jump(){
     green "Hysteria 2 端口使用模式如下："
     echo ""
-    echo -e " ${GREEN}1.${PLAIN} 单端口 ${YELLOW}（默认）${PLAIN}"
-    echo -e " ${GREEN}2.${PLAIN} 端口跳跃"
+    echo -e " ${PINK}1.${PLAIN} 单端口 ${YELLOW}（默认）${PLAIN}"
+    echo -e " ${PINK}2.${PLAIN} 端口跳跃"
     echo ""
     read -rp "请输入选项 [1-2]: " jumpInput
     if [[ $jumpInput == 2 ]]; then
@@ -454,9 +454,9 @@ stophysteria(){
 hysteriaswitch(){
     yellow "请选择你需要的操作："
     echo ""
-    echo -e " ${GREEN}1.${PLAIN} 启动 Hysteria 2"
-    echo -e " ${GREEN}2.${PLAIN} 关闭 Hysteria 2"
-    echo -e " ${GREEN}3.${PLAIN} 重启 Hysteria 2"
+    echo -e " ${PINK}1.${PLAIN} 启动 Hysteria 2"
+    echo -e " ${PINK}2.${PLAIN} 关闭 Hysteria 2"
+    echo -e " ${PINK}3.${PLAIN} 重启 Hysteria 2"
     echo ""
     read -rp "请输入选项 [0-3]: " switchInput
     case $switchInput in
@@ -475,7 +475,7 @@ changeport(){
 
     until [[ -z $(ss -tunlp | grep -w udp | awk '{print $5}' | sed 's/.*://g' | grep -w "$port") ]]; do
         if [[ -n $(ss -tunlp | grep -w udp | awk '{print $5}' | sed 's/.*://g' | grep -w "$port") ]]; then
-            echo -e "${RED} $port ${PLAIN} 端口已经被其他程序占用，请更换端口重试！"
+            echo -e "${BLUE} $port ${PLAIN} 端口已经被其他程序占用，请更换端口重试！"
             read -p "设置 Hysteria 2 端口 [1-65535]（回车则随机分配端口）：" port
             [[ -z $port ]] && port=$(shuf -i 2000-65535 -n 1)
         fi
@@ -542,10 +542,10 @@ changeproxysite(){
 
 changeconf(){
     green "Hysteria 2 配置变更选择如下:"
-    echo -e " ${GREEN}1.${PLAIN} 修改端口"
-    echo -e " ${GREEN}2.${PLAIN} 修改密码"
-    echo -e " ${GREEN}3.${PLAIN} 修改证书类型"
-    echo -e " ${GREEN}4.${PLAIN} 修改伪装网站"
+    echo -e " ${PINK}1.${PLAIN} 修改端口"
+    echo -e " ${PINK}2.${PLAIN} 修改密码"
+    echo -e " ${PINK}3.${PLAIN} 修改证书类型"
+    echo -e " ${PINK}4.${PLAIN} 修改伪装网站"
     echo ""
     read -p " 请选择操作 [1-4]：" confAnswer
     case $confAnswer in
@@ -579,20 +579,20 @@ update_core(){
 menu() {
     clear
     echo "#############################################################"
-    echo -e "#                  ${RED}Hysteria 2 一键安装脚本${PLAIN}                  #"
+    echo -e "#                  ${BLUE}Hysteria 2 一键安装脚本${PLAIN}                  #"
     echo -e "# ${BLUE}此版本修改自: MisakaNo の 小破站                                  #"
     echo "#############################################################"
     echo ""
-    echo -e " ${GREEN}1.${PLAIN} 安装 Hysteria 2"
-    echo -e " ${GREEN}2.${PLAIN} ${RED}卸载 Hysteria 2${PLAIN}"
+    echo -e " ${PINK}1.${PLAIN} 安装 Hysteria 2"
+    echo -e " ${PINK}2.${PLAIN} ${BLUE}卸载 Hysteria 2${PLAIN}"
     echo " -------------"
-    echo -e " ${GREEN}3.${PLAIN} 关闭、开启、重启 Hysteria 2"
-    echo -e " ${GREEN}4.${PLAIN} 修改 Hysteria 2 配置"
-    echo -e " ${GREEN}5.${PLAIN} 显示 Hysteria 2 配置文件"
+    echo -e " ${PINK}3.${PLAIN} 关闭、开启、重启 Hysteria 2"
+    echo -e " ${PINK}4.${PLAIN} 修改 Hysteria 2 配置"
+    echo -e " ${PINK}5.${PLAIN} 显示 Hysteria 2 配置文件"
     echo " -------------"
-    echo -e " ${GREEN}6.${PLAIN} 更新 Hysteria 2 内核"
+    echo -e " ${PINK}6.${PLAIN} 更新 Hysteria 2 内核"
     echo " -------------"
-    echo -e " ${GREEN}0.${PLAIN} 退出脚本"
+    echo -e " ${PINK}0.${PLAIN} 退出脚本"
     echo ""
     read -rp "请输入选项 [0-5]: " menuInput
     case $menuInput in
