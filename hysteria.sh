@@ -1,7 +1,5 @@
 #!/bin/bash
 
-stty erase ^H
-
 export LANG=en_US.UTF-8
 
 BLUE='\033[34m'
