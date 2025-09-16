@@ -1,8 +1,6 @@
 #!/bin/bash
 
-if [ -t 0 ]; then  
-    stty erase ^H
-fi
+stty erase ^H
 
 export LANG=en_US.UTF-8
 
