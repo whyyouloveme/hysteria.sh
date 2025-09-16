@@ -27,7 +27,8 @@ CMD=("$(grep -i pretty_name /etc/os-release 2>/dev/null | cut -d \" -f2)" \
      "$(grep . /etc/issue 2>/dev/null | cut -d \\ -f1 | sed '/^[ ]*$/d')")
 
 for i in "${CMD[@]}"; do
-    SYS="$i" && [[ -n $SYS ]] && break
+    SYS="$i"
+    [[ -n $SYS ]] && break
 done
 
 for ((int=0; int<${#REGEX[@]}; int++)); do
@@ -80,7 +81,10 @@ insthysteria(){
     rm -f install_server.sh
     [[ ! -f "/usr/local/bin/hysteria" ]] && red "安装失败" && exit 1
 
-    inst_cert; inst_port; inst_pwd; inst_site
+    inst_cert
+    inst_port
+    inst_pwd
+    inst_site
 
     cat << EOF > /etc/hysteria/config.yaml
 listen: :$port
