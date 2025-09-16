@@ -580,7 +580,7 @@ menu() {
     clear
     echo "#############################################################"
     echo -e "#                  ${BLUE}Hysteria 2 一键安装脚本${PLAIN}                  #"
-    echo -e "# ${BLUE}此版本修改自: MisakaNo の 小破站                                  #"
+    echo -e "#                  ${BLUE}此版本修改自: MisakaNo の 小破站                 #"
     echo "#############################################################"
     echo ""
     echo -e " ${PINK}1.${PLAIN} 安装 Hysteria 2"
